@@ -24,7 +24,7 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font:14px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 .wrap{padding:8px 10px}
-.grid{display:grid;grid-template-columns:170px minmax(0,1fr) 290px;gap:10px;align-items:stretch}
+.grid{display:grid;grid-template-columns:170px minmax(390px,1fr) 290px minmax(300px,340px);gap:10px;align-items:stretch}
 .clock{display:flex;align-items:center;justify-content:center;height:184px;cursor:pointer;user-select:none;overflow:hidden}
 .digital,.analogWrap{display:flex;flex-direction:column;align-items:center;justify-content:center}
 .analogWrap{display:none;height:100%;width:100%}.clock.analog .digital{display:none}.clock.analog .analogWrap{display:flex}
@@ -41,8 +41,7 @@ body{margin:0;background:var(--bg);color:var(--fg);font:14px -apple-system,Blink
 .analogStack{position:absolute;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:2px;z-index:2;line-height:1.03}
 .analogStack span{font-size:17px;font-weight:300}.analogDateStack{left:34px;color:var(--muted)}.analogTimeStack{right:34px;color:var(--fg)}
 .analogStack .small{font-size:11px;letter-spacing:.05em;text-transform:uppercase}
-.panel,.weather,.vocab{border:1px solid var(--border);border-radius:11px;background:var(--panel);min-width:0}
-.panel,.weather{height:184px}
+.panel,.weather,.vocab{border:1px solid var(--border);border-radius:11px;background:var(--panel);min-width:0;height:184px}
 .panel{padding:13px 14px;display:flex;flex-direction:column;justify-content:center;gap:10px}
 .taskrow{display:grid;grid-template-columns:minmax(116px,1fr) auto;gap:6px;align-items:center}
 .sel{width:100%;min-width:0;height:38px;padding:0 10px;border-radius:8px;border:1px solid var(--border2);background:var(--sub);color:var(--fg);font-size:14px}
@@ -63,34 +62,35 @@ body{margin:0;background:var(--bg);color:var(--fg);font:14px -apple-system,Blink
 .wxlink{color:var(--link);text-decoration:none;font-size:12px}.wxlink:hover{color:var(--fg);text-decoration:underline}
 
 /* Vocabulary card */
-.vocab{grid-column:1/-1;min-height:168px;padding:14px 16px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:16px}
-.vocabHead{display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border);padding-right:16px;min-width:0}
-.vocabKicker{font-size:10px;letter-spacing:.16em;color:var(--muted);text-transform:uppercase}
-.vocabWord{font-size:34px;font-weight:350;letter-spacing:-.02em;margin-top:5px;overflow-wrap:anywhere}
-.vocabMeta{font-size:11px;color:var(--muted2);margin-top:5px}
-.vocabBody{display:flex;flex-direction:column;justify-content:center;gap:8px;min-width:0}
-.choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
-.choice{min-height:44px;padding:8px 10px;border:1px solid var(--border2);border-radius:8px;background:var(--sub);color:var(--fg);font:inherit;text-align:left;cursor:pointer}
+.vocab{padding:12px 14px;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+.vocabHead{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"kicker score" "word word" "meta meta";align-content:start;min-width:0}
+.vocabKicker{grid-area:kicker;font-size:9px;letter-spacing:.15em;color:var(--muted);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vocabWord{grid-area:word;font-size:28px;font-weight:350;line-height:1.05;letter-spacing:-.02em;margin-top:3px;overflow-wrap:anywhere}
+.vocabMeta{grid-area:meta;font-size:10px;color:var(--muted2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.score{grid-area:score;font-size:9px;color:var(--source);white-space:nowrap;margin-left:8px;align-self:center}
+.vocabBody{position:relative;display:flex;flex:1;min-height:0;flex-direction:column;justify-content:flex-start;gap:5px}
+.choices{display:grid;grid-template-columns:1fr;gap:4px;min-height:0}
+.choice{min-height:29px;padding:5px 8px;border:1px solid var(--border2);border-radius:8px;background:var(--sub);color:var(--fg);font:inherit;font-size:12px;line-height:1.2;text-align:left;cursor:pointer}
 .choice:hover{border-color:var(--active)}.choice:disabled{cursor:default}
 .choice.correct{border-color:var(--ok)}.choice.wrong{border-color:var(--error);opacity:.78}
-.answer{display:none;align-items:center;gap:10px;min-height:38px;color:var(--muted)}
-.answer.show{display:flex}.answerMark{font-weight:700}.answerMark.ok{color:var(--ok)}.answerMark.ng{color:var(--error)}
-.answerText{color:var(--fg)}.answerExplain{font-size:12px;color:var(--muted)}
-.vocabActions{margin-left:auto;display:flex;gap:7px;white-space:nowrap}
-.vocabLink,.nextBtn{height:32px;padding:0 11px;border:1px solid var(--border3);border-radius:7px;background:var(--control);color:var(--link);font:inherit;text-decoration:none;display:inline-flex;align-items:center;cursor:pointer}
-.vocabLink:hover,.nextBtn:hover{color:var(--fg)}
-.score{font-size:10px;color:var(--source);margin-top:2px}
+.answer{display:none;color:var(--muted)}
+.answer.show{position:absolute;inset:0;display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto 1fr auto;column-gap:8px;row-gap:4px;padding:7px 8px;border:1px solid var(--border);border-radius:8px;background:var(--sub);overflow:hidden}
+.answerMark{grid-column:1;grid-row:1;font-weight:700}.answerMark.ok{color:var(--ok)}.answerMark.ng{color:var(--error)}
+.answer.show>div:not(.vocabActions){grid-column:2;grid-row:1/3;min-width:0}
+.answerText{color:var(--fg);font-size:12px;line-height:1.2}
+.answerExplain{font-size:11px;line-height:1.25;color:var(--muted);margin-top:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.vocabActions{grid-column:1/-1;grid-row:3;display:flex;gap:5px;white-space:nowrap}
+.vocabLink,.nextBtn{height:27px;padding:0 8px;border:1px solid var(--border3);border-radius:7px;background:var(--control);color:var(--link);font:inherit;font-size:11px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.vocabLink,.nextBtn{flex:1}.vocabLink:hover,.nextBtn:hover{color:var(--fg)}
 
-@media(max-width:650px){
-  .grid{grid-template-columns:150px minmax(0,1fr) 250px}.clock,.panel,.weather{height:170px}.analogFace{width:150px;height:150px}
-  .analogDateStack{left:30px}.analogTimeStack{right:30px}.weather{padding:12px}.desc{display:none}
-  .taskrow{grid-template-columns:minmax(104px,1fr) auto}.sel{font-size:12px}.btn,.pomoBtn{height:34px}.btn{width:34px}.pomoBtn{width:48px}.value{font-size:28px}
-  .vocab{grid-template-columns:180px minmax(0,1fr)}.vocabWord{font-size:28px}
+@media(max-width:1180px){
+  .grid{grid-template-columns:minmax(260px,.8fr) minmax(390px,1.2fr)}
+  .clock,.panel,.weather,.vocab{height:184px}
 }
-@media(max-width:520px){
-  .grid{grid-template-columns:1fr}.clock,.panel,.weather{height:auto;min-height:160px}.taskrow{grid-template-columns:1fr}.actions{flex-wrap:wrap}
-  .vocab{grid-template-columns:1fr}.vocabHead{border-right:0;border-bottom:1px solid var(--border);padding:0 0 10px}.choices{grid-template-columns:1fr}
-  .answer{align-items:flex-start;flex-wrap:wrap}.vocabActions{margin-left:0;width:100%}
+@media(max-width:720px){
+  .grid{grid-template-columns:1fr}.clock,.panel,.weather,.vocab{height:auto;min-height:160px}
+  .taskrow{grid-template-columns:1fr}.actions{flex-wrap:wrap}
+  .vocab{min-height:184px}
 }
 </style>
 </head>
