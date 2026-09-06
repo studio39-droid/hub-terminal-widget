@@ -21,13 +21,6 @@
     "detail": "https://app.notion.com/p/commit-3d3d867b701081bdb3f8ee6d5b4bdfb2"
   },
   {
-    "word": "dependency",
-    "meaning": "依存関係",
-    "explain": "あるソフトや機能が動くために必要になる別のライブラリや仕組み。",
-    "cat": "Programming",
-    "detail": "https://app.notion.com/p/dependency-3d3d867b70108105ada6e45ffdfc9c4d"
-  },
-  {
     "word": "deprecated",
     "meaning": "非推奨になった",
     "explain": "今は動く場合があっても、今後の利用をやめる方向になっている機能やAPI。",
