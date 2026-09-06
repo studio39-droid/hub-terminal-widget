@@ -42,6 +42,13 @@
     "detail": "https://app.notion.com/p/fallback-3d3d867b701081d0ab70d9019d091d8f"
   },
   {
+    "word": "fetch",
+    "meaning": "取得する／読み込む",
+    "explain": "データやファイルなどを、別の場所から取得してくること。WebやGitでは頻繁に使う。",
+    "cat": "General · Programming · Git",
+    "detail": "https://app.notion.com/p/fetch-3d3d867b701081d28b5bc4e3258647a4"
+  },
+  {
     "word": "infrastructure",
     "meaning": "基盤／インフラ",
     "explain": "他の機能や運用を支える土台となる仕組み全体。",
