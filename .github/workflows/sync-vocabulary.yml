@@ -1,0 +1,34 @@
+name: Sync Notion Vocabulary
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fetch vocabulary from Notion
+        run: node scripts/sync-notion-vocab.mjs
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_VOCAB_DATA_SOURCE_ID: 8345f227-91fd-49e6-b6a8-2c7e42c80302
+      - name: Commit updated vocabulary
+        run: |
+          if git diff --quiet -- vocab.json; then
+            echo "Vocabulary is already up to date."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add vocab.json
+          git commit -m "Sync vocabulary from Notion"
+          git push

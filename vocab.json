@@ -1,0 +1,18 @@
+[
+  {"word":"branch","meaning":"分岐／枝分かれ","explain":"Gitでは、元の開発ラインを保ったまま別の変更を進めるための分岐。","cat":"Git · Programming","detail":"https://app.notion.com/p/3d3d867b70108144ab88c5872c928b57"},
+  {"word":"merge","meaning":"統合する／合流する","explain":"別々に進めた変更を1つの開発ラインへまとめること。","cat":"Git","detail":"https://app.notion.com/p/3d3d867b701081c0844bc86fbd93c113"},
+  {"word":"commit","meaning":"変更を記録する","explain":"Gitで、その時点の変更内容を履歴として保存する単位。","cat":"Git","detail":"https://app.notion.com/p/3d3d867b701081bdb3f8ee6d5b4bdfb2"},
+  {"word":"repository","meaning":"リポジトリ／保管庫","explain":"コードや変更履歴をまとめて管理するプロジェクトの入れ物。","cat":"Git · Programming","detail":"https://app.notion.com/p/3d3d867b701081f7b8a3fb88f2cce360"},
+  {"word":"dependency","meaning":"依存関係","explain":"あるソフトや機能が動くために必要になる別のライブラリや仕組み。","cat":"Programming","detail":"https://app.notion.com/p/3d3d867b70108105ada6e45ffdfc9c4d"},
+  {"word":"deprecated","meaning":"非推奨になった","explain":"今は動いても、今後の利用をやめる方向になっている機能やAPI。","cat":"Programming","detail":"https://app.notion.com/p/3d3d867b70108177b449db950c51aeb6"},
+  {"word":"fallback","meaning":"代替手段／予備動作","explain":"本来の方法が使えないときに代わりに使う処理や値。","cat":"Programming · General","detail":"https://app.notion.com/p/3d3d867b701081d0ab70d9019d091d8f"},
+  {"word":"upstream","meaning":"本家側／上流","explain":"Gitでは、自分のコピーや派生元になっている本家プロジェクト側を指すことが多い。","cat":"Git · Programming","detail":"https://app.notion.com/p/3d3d867b701081e4af4ae846cdf7da1b"},
+  {"word":"localization","meaning":"ローカライズ／地域・言語対応","explain":"アプリの表示や形式を、特定の言語・地域に合わせること。","cat":"Programming · General","detail":"https://app.notion.com/p/3d3d867b701081508d32cd8e1b5e8c49"},
+  {"word":"infrastructure","meaning":"基盤／インフラ","explain":"他の機能や運用を支える土台となる仕組み全体。","cat":"General · Programming","detail":"https://app.notion.com/p/3d3d867b7010818881ced65a154dfc53"},
+  {"word":"modifier","meaning":"修飾するもの／修飾キー","explain":"キーボードではCommand・Shift・Option・Controlなど、他のキーの働きを変えるキー。","cat":"macOS · Programming","detail":"https://app.notion.com/p/3d3d867b70108197bd31ed519c4c8673"},
+  {"word":"stuck","meaning":"動かない／引っかかった","explain":"技術文脈では、処理やキーなどが本来の状態から戻らず固まっている状態にも使う。","cat":"General · Programming","detail":"https://app.notion.com/p/3d3d867b701081f2bc05f661e375b64e"},
+  {"word":"prevent","meaning":"防ぐ","explain":"問題や動作が起きないようにすること。","cat":"General","detail":"https://app.notion.com/p/3d3d867b7010819faa96c1bfe6c4be76"},
+  {"word":"temporary","meaning":"一時的な","explain":"恒久的ではなく、限られた時間だけ続く状態。","cat":"General","detail":"https://app.notion.com/p/3d3d867b7010816881dbef96eca80d60"},
+  {"word":"available","meaning":"利用可能な／空いている","explain":"機能・物・時間などが使える状態にあること。","cat":"General","detail":"https://app.notion.com/p/3d3d867b701081a896daf7c4f630355d"},
+  {"word":"source of truth","meaning":"正とする唯一の情報源","explain":"複数のコピーではなく、最終的に正しいと判断する基準となるデータや場所。","cat":"Programming · General","detail":"https://app.notion.com/p/3d3d867b701081d9ba81d221378ed024"}
+]

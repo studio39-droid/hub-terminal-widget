@@ -198,8 +198,8 @@ pomoBtn.onclick=()=>{pomoOn=!pomoOn;render()}
 const codes={0:['☀️','Clear'],1:['🌤️','Mostly clear'],2:['⛅','Partly cloudy'],3:['☁️','Cloudy'],45:['🌫️','Fog'],48:['🌫️','Fog'],51:['🌦️','Drizzle'],53:['🌦️','Drizzle'],55:['🌧️','Drizzle'],61:['🌧️','Rain'],63:['🌧️','Rain'],65:['🌧️','Heavy rain'],71:['🌨️','Snow'],80:['🌦️','Showers'],81:['🌧️','Showers'],82:['⛈️','Heavy showers'],95:['⛈️','Thunderstorm']};
 async function weather(){try{const u='https://api.open-meteo.com/v1/forecast?latitude=34.0703&longitude=134.5548&current=temperature_2m,apparent_temperature,weather_code&hourly=precipitation_probability&daily=temperature_2m_max,temperature_2m_min&timezone=Asia%2FTokyo&forecast_days=1';const r=await fetch(u);if(!r.ok)throw new Error('HTTP '+r.status);const j=await r.json(),c=j.current,d=j.daily,ix=j.hourly.time.indexOf(c.time.slice(0,13)+':00'),wc=codes[c.weather_code]||['•','Weather'];q('#wicon').textContent=wc[0];q('#temp').textContent=Math.round(c.temperature_2m)+'°';q('#desc').textContent=wc[1];q('#feel').textContent='Feels '+Math.round(c.apparent_temperature)+'°';q('#highlow').textContent='H '+Math.round(d.temperature_2m_max[0])+'° / L '+Math.round(d.temperature_2m_min[0])+'°';q('#rain').textContent='Rain '+(ix>=0?j.hourly.precipitation_probability[ix]:'--')+'%'}catch(e){q('#desc').textContent='Weather unavailable'}}
 
-// Vocabulary MVP
-const vocab=[
+// Vocabulary
+const fallbackVocab=[
 {word:'branch',meaning:'分岐／枝分かれ',explain:'Gitでは、元の開発ラインを保ったまま別の変更を進めるための分岐。',cat:'Git · Programming',detail:'https://app.notion.com/p/3d3d867b70108144ab88c5872c928b57'},
 {word:'merge',meaning:'統合する／合流する',explain:'別々に進めた変更を1つの開発ラインへまとめること。',cat:'Git',detail:'https://app.notion.com/p/3d3d867b701081c0844bc86fbd93c113'},
 {word:'commit',meaning:'変更を記録する',explain:'Gitで、その時点の変更内容を履歴として保存する単位。',cat:'Git',detail:'https://app.notion.com/p/3d3d867b701081bdb3f8ee6d5b4bdfb2'},
@@ -217,12 +217,22 @@ const vocab=[
 {word:'available',meaning:'利用可能な／空いている',explain:'機能・物・時間などが使える状態にあること。',cat:'General',detail:'https://app.notion.com/p/3d3d867b701081a896daf7c4f630355d'},
 {word:'source of truth',meaning:'正とする唯一の情報源',explain:'複数のコピーではなく、最終的に正しいと判断する基準となるデータや場所。',cat:'Programming · General',detail:'https://app.notion.com/p/3d3d867b701081d9ba81d221378ed024'}
 ];
+let vocab=[...fallbackVocab];
 const vocabWord=q('#vocabWord'),vocabMeta=q('#vocabMeta'),choices=q('#choices'),answer=q('#answer'),answerMark=q('#answerMark'),
 answerText=q('#answerText'),answerExplain=q('#answerExplain'),detailLink=q('#detailLink'),nextWord=q('#nextWord'),score=q('#score');
 let current=-1,stats={correct:0,wrong:0};
 try{stats=JSON.parse(localStorage.getItem('hub-vocab-stats'))||stats}catch{}
 const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function saveStats(){try{localStorage.setItem('hub-vocab-stats',JSON.stringify(stats))}catch{}}
+async function loadVocab(){
+  try{
+    const response=await fetch('./vocab.json',{cache:'no-store'});
+    if(!response.ok)throw new Error('HTTP '+response.status);
+    const data=await response.json();
+    if(Array.isArray(data)&&data.length>=3)vocab=data;
+  }catch(e){console.warn('Vocabulary sync fallback:',e)}
+  showWord();
+}
 function makeChoices(item){
   const wrongPool=vocab.filter(v=>v.word!==item.word).map(v=>v.meaning);
   return shuffle([item.meaning,...shuffle(wrongPool).slice(0,2)]);
@@ -245,7 +255,7 @@ function answerChoice(button,text,item){
 nextWord.onclick=showWord;
 
 // Init
-applyClock();tickClock();setInterval(tickClock,1000);render();weather();setInterval(weather,900000);showWord();
+applyClock();tickClock();setInterval(tickClock,1000);render();weather();setInterval(weather,900000);loadVocab();
 })();
 </script>
 </body>
