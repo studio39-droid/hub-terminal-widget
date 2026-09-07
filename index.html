@@ -44,10 +44,10 @@ body{margin:0;background:var(--bg);color:var(--fg);font:14px -apple-system,Blink
 .panel,.weather,.vocab{border:1px solid var(--border);border-radius:11px;background:var(--panel);min-width:0;height:184px}
 .panel{padding:13px 14px;display:flex;flex-direction:column;justify-content:center;gap:10px}
 .taskrow{display:grid;grid-template-columns:minmax(116px,1fr) auto;gap:6px;align-items:center}
-.sel{width:100%;min-width:0;height:38px;padding:0 10px;border-radius:8px;border:1px solid var(--border2);background:var(--sub);color:var(--fg);font-size:14px}
+.activeTask{min-width:0;height:38px;padding:5px 10px;border-radius:8px;border:1px solid var(--border2);background:var(--sub);display:flex;flex-direction:column;justify-content:center}.activeTaskTitle{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.activeTaskStage{font-size:10px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .actions{display:flex;gap:4px;align-items:center;white-space:nowrap}
 .btn,.pomoBtn{height:38px;padding:0;border-radius:8px;border:1px solid var(--border3);background:var(--control);color:var(--muted2);line-height:1;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
-.btn{width:38px;font-size:16px}#start{font-size:13px}.btn#stop,.btn#finish{font-size:19px}.pomoBtn{width:56px;font-size:11px;letter-spacing:.08em}
+.btn{width:38px;font-size:16px}.btn#stop,.btn#finish{font-size:19px}.pomoBtn{width:56px;font-size:11px;letter-spacing:.08em}
 .btn.active,.pomoBtn.active{color:var(--fg);border-color:var(--active)}.btn:disabled{opacity:1;cursor:default}
 .times{display:grid;grid-template-columns:1fr 1fr;gap:8px}.meter{border:1px solid var(--border);border-radius:9px;background:var(--sub);padding:11px 14px;min-width:0}
 .label{font-size:11px;letter-spacing:.16em;color:var(--muted);text-transform:uppercase}.value{margin-top:3px;font-size:32px;font-weight:300;line-height:1.02;font-variant-numeric:tabular-nums}
@@ -111,20 +111,8 @@ body{margin:0;background:var(--bg);color:var(--fg);font:14px -apple-system,Blink
 
     <section class="panel">
       <div class="taskrow">
-        <select id="task" class="sel">
-          <option value="">— Select task —</option>
-          <option>Hub Terminal UI設計</option>
-          <option>Deco Reco 仕様変更</option>
-          <option>Ticket 構想整理</option>
-          <option>その他</option>
-        </select>
-        <div class="actions">
-          <button id="pomoBtn" class="pomoBtn">POMO</button>
-          <button id="start" class="btn active">▶</button>
-          <button id="stop" class="btn" disabled>⏸</button>
-          <button id="finish" class="btn" disabled>✓</button>
-        </div>
-        <div id="err" class="err"></div>
+        <div class="activeTask"><div id="activeTaskTitle" class="activeTaskTitle">作業なし</div><div id="activeTaskStage" class="activeTaskStage">Cargo Bayから開始</div></div>
+        <div class="actions"><button id="pomoBtn" class="pomoBtn">POMO</button><button id="stop" class="btn" disabled title="中断">⏸</button><button id="finish" class="btn" disabled title="完了">✓</button></div>
       </div>
       <div class="times">
         <div class="meter"><div class="label">Work</div><div id="work" class="value">00:00:00</div><div id="workSub" class="tiny">Idle</div></div>
@@ -169,6 +157,8 @@ body{margin:0;background:var(--bg);color:var(--fg);font:14px -apple-system,Blink
   </div>
 </div>
 
+<script src="./hub-session.js"></script>
+<script src="./hub-focus.js"></script>
 <script>
 (()=>{
 const q=s=>document.querySelector(s);
@@ -183,16 +173,21 @@ const pad=n=>String(Math.floor(n)).padStart(2,'0'),hms=s=>pad(s/3600)+':'+pad((s
 function tickClock(){const d=new Date,h=d.getHours(),m=d.getMinutes(),s=d.getSeconds();hm.textContent=pad(h)+':'+pad(m);sec.textContent=pad(s);date.textContent=d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'2-digit'}).toUpperCase();aMonth.textContent=pad(d.getMonth()+1);aDay.textContent=pad(d.getDate());aWeek.textContent=d.toLocaleDateString('en-US',{weekday:'short'}).toUpperCase();aHour.textContent=pad(h);aMinute.textContent=pad(m);aSecond.textContent=pad(s);hourHand.style.transform=`rotate(${(h%12)*30+m*.5}deg)`;minuteHand.style.transform=`rotate(${m*6+s*.1}deg)`;secondHand.style.transform=`rotate(${s*6}deg)`}
 
 // Timer / Pomo
-const task=q('#task'),err=q('#err'),work=q('#work'),workSub=q('#workSub'),pomoTime=q('#pomoTime'),pomoSub=q('#pomoSub'),
-start=q('#start'),stop=q('#stop'),finish=q('#finish'),pomoBtn=q('#pomoBtn');
-let mode='idle',w=0,fr=1500,fo=0,br=300,bro=0,pomoOn=false;
-function buttons(){const running=mode==='work';start.classList.toggle('active',!running);stop.classList.toggle('active',running);finish.classList.toggle('active',running);start.disabled=running;stop.disabled=!running;finish.disabled=!running;pomoBtn.classList.toggle('active',pomoOn)}
-function render(){work.textContent=hms(w);workSub.textContent=mode==='work'?(task.value||'Working'):mode==='break'?'Break':'Idle';if(!pomoOn){pomoTime.textContent='Off';pomoTime.className='value off';pomoSub.textContent='Focus 25 / Break 5'}else if(mode==='break'){pomoTime.className='value';pomoTime.textContent=br>0?mmss(br):'+'+mmss(bro);pomoSub.textContent='Break'}else{pomoTime.className='value';pomoTime.textContent=fr>0?mmss(fr):'+'+mmss(fo);pomoSub.textContent='Focus'}buttons()}
-setInterval(()=>{if(mode==='work'){w++;if(pomoOn){fr>0?fr--:fo++}}else if(mode==='break'&&pomoOn){br>0?br--:bro++}render()},1000);
-start.onclick=()=>{if(!task.value){err.textContent='タスクを選択してください';return}err.textContent='';mode='work';task.disabled=true;render()}
-stop.onclick=()=>{if(mode==='work'){mode='break';task.disabled=false;if(pomoOn){br=300;bro=0}}render()}
-finish.onclick=()=>{mode='idle';task.disabled=false;render()}
-pomoBtn.onclick=()=>{pomoOn=!pomoOn;render()}
+const work=q('#work'),workSub=q('#workSub'),pomoTime=q('#pomoTime'),pomoSub=q('#pomoSub'),stop=q('#stop'),finish=q('#finish'),pomoBtn=q('#pomoBtn'),activeTaskTitle=q('#activeTaskTitle'),activeTaskStage=q('#activeTaskStage'),HS=window.HubSession,HF=window.HubFocus,K=HS.KEYS;
+let lastWorkSessionId=HS.getActive()?.sessionId||null;
+const activeSession=()=>HS.getActive(),elapsedWork=()=>HS.elapsedSec();
+function mmssSigned(sec){const sign=sec<0?'+':'';return sign+mmss(Math.abs(sec))}
+function phaseDuration(state){return state.mode==='break'?HF.BREAK_SEC:HF.FOCUS_SEC}
+function formatPomo(state){if(state.mode==='off')return'Off';const rem=phaseDuration(state)-HF.elapsedSec();return mmssSigned(rem)}
+function buttons(){const r=!!activeSession(),ps=HF.getState();stop.classList.toggle('active',r);finish.classList.toggle('active',r);stop.disabled=!r;finish.disabled=!r;pomoBtn.classList.toggle('active',ps.mode!=='off');pomoBtn.textContent=ps.mode==='focus'?'BREAK':ps.mode==='break'?'FOCUS':'POMO'}
+function workEndFor(boundId){if(!boundId)return Date.now();const rec=[...HS.getSessions()].reverse().find(x=>x.id===boundId);return rec?.endedAt?new Date(rec.endedAt).getTime():Date.now()}
+function reconcilePomoWithWork(){const ps=HF.getState(),a=activeSession();if(ps.mode==='focus'&&ps.boundWorkSessionId&&!a){HF.reset('work_ended',workEndFor(ps.boundWorkSessionId))}}
+function render(){reconcilePomoWithWork();const x=activeSession(),ps=HF.getState();work.textContent=hms(elapsedWork());activeTaskTitle.textContent=x?.cargoTitle||'作業なし';activeTaskStage.textContent=x?.stageLabel||'Cargo Bayから開始';workSub.textContent=x?(x.stageLabel+' · Working'):'Idle';if(ps.mode==='off'){pomoTime.textContent='Off';pomoTime.className='value off';pomoSub.textContent='Focus 25 / Break 5'}else{pomoTime.className='value';pomoTime.textContent=formatPomo(ps);pomoSub.textContent=ps.mode==='break'?'Break · 手動でFocusへ':'Focus · 手動でBreakへ'}buttons()}
+setInterval(render,1000);
+stop.onclick=()=>{const a=activeSession();HS.pauseWorkSession();if(HF.getState().mode!=='off')HF.reset('work_paused',a?workEndFor(a.sessionId):Date.now());lastWorkSessionId=null;render()};
+finish.onclick=()=>{const a=activeSession();HS.completeWorkSession();if(HF.getState().mode!=='off')HF.reset('work_completed',a?workEndFor(a.sessionId):Date.now());lastWorkSessionId=null;render()};
+pomoBtn.onclick=()=>{const ps=HF.getState();if(ps.mode==='off')HF.startFocus(activeSession());else if(ps.mode==='focus')HF.startBreak(Date.now(),'manual_break');else HF.startFocus(activeSession());render()};
+window.addEventListener('storage',e=>{const focusKeys=Object.values(HF.KEYS);if(!Object.values(K).includes(e.key)&&!focusKeys.includes(e.key))return;const a=activeSession();if(e.key===K.active&&lastWorkSessionId&&!a&&HF.getState().mode!=='off')HF.reset('work_ended',workEndFor(lastWorkSessionId));lastWorkSessionId=a?.sessionId||null;render()});
 
 // Weather
 const codes={0:['☀️','Clear'],1:['🌤️','Mostly clear'],2:['⛅','Partly cloudy'],3:['☁️','Cloudy'],45:['🌫️','Fog'],48:['🌫️','Fog'],51:['🌦️','Drizzle'],53:['🌦️','Drizzle'],55:['🌧️','Drizzle'],61:['🌧️','Rain'],63:['🌧️','Rain'],65:['🌧️','Heavy rain'],71:['🌨️','Snow'],80:['🌦️','Showers'],81:['🌧️','Showers'],82:['⛈️','Heavy showers'],95:['⛈️','Thunderstorm']};
