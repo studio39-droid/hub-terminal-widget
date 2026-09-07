@@ -395,3 +395,7 @@ Notion Work Sessions DB
 へ保存Sinkを差し替える。
 
 Notion保存成功後だけActive SessionをResetする契約はv5 localStorage実装と同じにする。
+
+
+## v5.1 widget separation
+Hub Core (`index.html`) owns Clock + Timer + Weather. Cargo Bay (`cargo.html`) and Vocabulary (`vocabulary.html`) are independent Notion-embeddable widgets. Cargo Bay adds `■ Session終了`, which closes/logs the logical Session without completing the current stage.
