@@ -1,5 +1,26 @@
 [
   {
+    "word": "agent",
+    "meaning": "代理人／仲介者",
+    "explain": "AIでは、指示を受けて調査・編集・実行などをある程度自律的に進める仕組み。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/agent-3d5d867b701081eab6fcf9caadfef408"
+  },
+  {
+    "word": "Agent Host",
+    "meaning": "agent＝代理人、host＝主催者／受け入れ側",
+    "explain": "複数のAI Agentを起動・管理・接続し、同じ開発環境で扱うための基盤。",
+    "cat": "Programming",
+    "detail": "https://app.notion.com/p/Agent-Host-3d5d867b701081e3b5def83f7784f3c9"
+  },
+  {
+    "word": "architecture",
+    "meaning": "建築／建築様式／構造",
+    "explain": "ソフトウェアでは、機能の役割分担・データの流れ・コンポーネント同士の関係などを含む全体設計。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/architecture-3d5d867b7010814a99dae40e1fb18940"
+  },
+  {
     "word": "available",
     "meaning": "利用可能な／空いている",
     "explain": "機能・物・時間などが使える状態にあること。",
@@ -7,11 +28,67 @@
     "detail": "https://app.notion.com/p/available-3d3d867b701081a896daf7c4f630355d"
   },
   {
+    "word": "background",
+    "meaning": "背景／後ろ側",
+    "explain": "ITでは、ユーザーが前面で直接操作していなくても裏側で処理が動いている状態。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/background-3d5d867b70108140ae6df91f4d363d1d"
+  },
+  {
     "word": "branch",
-    "meaning": "分岐／枝分かれ",
-    "explain": "Gitでは、元の開発ラインを保ったまま別の変更を進めるための分岐。",
+    "meaning": "枝／支店／分岐",
+    "explain": "Gitでは、元の開発ラインを保ったまま別の変更を進めるための分岐した開発ライン。",
     "cat": "Git · Programming",
     "detail": "https://app.notion.com/p/branch-3d3d867b70108144ab88c5872c928b57"
+  },
+  {
+    "word": "browser",
+    "meaning": "拾い読みする人／閲覧するもの",
+    "explain": "ITではWebページやWebアプリを閲覧・操作するためのソフトウェア。ChromeやSafariなど。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/browser-3d5d867b701081c2869dd4d381d57451"
+  },
+  {
+    "word": "BYOM",
+    "meaning": "Bring Your Own Model＝自分のモデルを持ち込む",
+    "explain": "利用者がサービス側の固定モデルではなく、自分で選んだAIモデルを接続して使う方式。",
+    "cat": "Programming",
+    "detail": "https://app.notion.com/p/BYOM-3d5d867b70108173acefcad0a740152a"
+  },
+  {
+    "word": "CI",
+    "meaning": "Continuous Integration＝継続的インテグレーション",
+    "explain": "コード変更時にビルドやテストなどを自動実行し、問題を早く検出する仕組み。",
+    "cat": "Programming · Git",
+    "detail": "https://app.notion.com/p/CI-3d5d867b7010813fbf67d1e5e5126fe6"
+  },
+  {
+    "word": "CLI",
+    "meaning": "Command Line Interface＝コマンド行インターフェース",
+    "explain": "文字コマンドを入力してソフトウェアを操作する方式。GUIの対概念として使われる。",
+    "cat": "Programming",
+    "detail": "https://app.notion.com/p/CLI-3d5d867b701081cf956bc6511157d0bc"
+  },
+  {
+    "word": "cloud",
+    "meaning": "雲",
+    "explain": "ITでは、自分の端末ではなくインターネット上のサーバーや計算資源を利用する仕組みや環境。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/cloud-3d5d867b7010817ea082c3e0bc19bea9"
+  },
+  {
+    "word": "Cloud Agent",
+    "meaning": "cloud＝クラウド、agent＝代理実行者",
+    "explain": "クラウド上の独立した環境でコード編集・テスト・PR作成などを自律的に進めるAI Agent。",
+    "cat": "Programming",
+    "detail": "https://app.notion.com/p/Cloud-Agent-3d5d867b701081d8b77dc7cbeb9e5c1a"
+  },
+  {
+    "word": "codebase",
+    "meaning": "code＝コード、base＝基盤／土台",
+    "explain": "あるソフトウェアやプロジェクトを構成するソースコード全体。",
+    "cat": "Programming",
+    "detail": "https://app.notion.com/p/codebase-3d5d867b701081e9b645feabf64046b1"
   },
   {
     "word": "commit",
@@ -21,11 +98,46 @@
     "detail": "https://app.notion.com/p/commit-3d3d867b701081bdb3f8ee6d5b4bdfb2"
   },
   {
+    "word": "context",
+    "meaning": "文脈／背景／前後関係",
+    "explain": "AIやソフトウェアでは、現在の判断や処理に使われる会話・コード・ファイル・設定などの周辺情報。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/context-3d5d867b7010813abcdec0d9ee9ec80f"
+  },
+  {
+    "word": "deploy",
+    "meaning": "配置する／展開する／配備する",
+    "explain": "開発では、作ったアプリやコードをサーバーや本番環境など、実際に動かす場所へ配置して利用可能な状態にすること。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/deploy-3d5d867b7010811fb288e0114090bea1"
+  },
+  {
     "word": "deprecated",
     "meaning": "非推奨になった",
     "explain": "今は動く場合があっても、今後の利用をやめる方向になっている機能やAPI。",
     "cat": "Programming",
     "detail": "https://app.notion.com/p/deprecated-3d3d867b70108177b449db950c51aeb6"
+  },
+  {
+    "word": "design",
+    "meaning": "設計／意匠／デザイン",
+    "explain": "ソフトウェアでは見た目だけでなく、構造・仕様・処理の流れをどう作るかという設計も指す。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/design-3d5d867b701081ed9cc8f5497088f565"
+  },
+  {
+    "word": "diff",
+    "meaning": "difference の略＝違い／差",
+    "explain": "Gitなどで、変更前と変更後のファイル内容の差分を表示したもの。",
+    "cat": "Git · Programming",
+    "detail": "https://app.notion.com/p/diff-3d5d867b701081228849fa08dd05acca"
+  },
+  {
+    "word": "extension",
+    "meaning": "延長／拡張／追加部分",
+    "explain": "VS Codeなどのアプリに後から追加して機能を増やすプラグイン型の追加機能。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/extension-3d5d867b70108105ab35ebcbb72ba2e5"
   },
   {
     "word": "fallback",
@@ -42,11 +154,74 @@
     "detail": "https://app.notion.com/p/fetch-3d3d867b701081d28b5bc4e3258647a4"
   },
   {
+    "word": "frontier model",
+    "meaning": "frontier＝最前線／未開拓領域",
+    "explain": "AI分野で、その時点の最高水準に近い能力を持つ最先端モデルを指す表現。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/frontier-model-3d5d867b70108104ad96fc6b8c86cce6"
+  },
+  {
+    "word": "handoff",
+    "meaning": "引き継ぎ／受け渡し",
+    "explain": "AIやソフトウェアでは、作業・状態・文脈を別のAgentや処理へ引き継ぐこと。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/handoff-3d5d867b701081fabe10f697af9dfe6a"
+  },
+  {
+    "word": "harness",
+    "meaning": "馬具／装具／利用する仕組み",
+    "explain": "AI開発では、モデルに指示・ツール・権限・実行手順を与えて働かせる制御層や実行環境。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/harness-3d5d867b70108109acc6e105a0a52b4c"
+  },
+  {
+    "word": "host",
+    "meaning": "主人／主催者／受け入れ側",
+    "explain": "ITでは、他のプログラム・サービス・機能を動かしたり受け入れたりする側のコンピューターや基盤。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/host-3d5d867b701081ac8a13c7a5b1e64339"
+  },
+  {
+    "word": "implement",
+    "meaning": "実行する／実施する",
+    "explain": "開発では、仕様や設計を実際のコードや機能として作ること。implementation の動詞形。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/implement-3d5d867b701081fca00acea050203754"
+  },
+  {
+    "word": "implementation",
+    "meaning": "実施／実行／実現",
+    "explain": "ソフトウェアでは、設計や仕様を実際に動くコードとして作ること。またはその実装そのもの。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/implementation-3d5d867b70108191b107f0385bad5999"
+  },
+  {
     "word": "infrastructure",
     "meaning": "基盤／インフラ",
     "explain": "他の機能や運用を支える土台となる仕組み全体。",
     "cat": "General · Programming",
     "detail": "https://app.notion.com/p/infrastructure-3d3d867b7010818881ced65a154dfc53"
+  },
+  {
+    "word": "integrated",
+    "meaning": "統合された／一体化した",
+    "explain": "ITでは、別々の機能やツールが同じ製品・環境の中で連携して使える状態。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/integrated-3d5d867b7010815fb5d3fa0160d7b947"
+  },
+  {
+    "word": "interface",
+    "meaning": "接点／境界面",
+    "explain": "ITでは、人とソフトウェア、またはソフトウェア同士が情報をやり取りする接続部分や約束事。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/interface-3d5d867b7010817d95dae88a2f5bebe1"
+  },
+  {
+    "word": "local",
+    "meaning": "地元の／局所的な／その場所の",
+    "explain": "ITでは、自分が現在使っている端末や環境の中で処理すること。remoteやcloudの対比で使われる。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/local-3d5d867b701081578b30f2f75db9cac3"
   },
   {
     "word": "localization",
@@ -63,11 +238,32 @@
     "detail": "https://app.notion.com/p/merge-3d3d867b701081c0844bc86fbd93c113"
   },
   {
+    "word": "model",
+    "meaning": "模型／模範／型",
+    "explain": "AIではGPTやClaudeなど、入力を処理して出力を生成する学習済みモデル本体。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/model-3d5d867b7010811186f2d27c9854e01f"
+  },
+  {
     "word": "modifier",
     "meaning": "修飾するもの／修飾キー",
     "explain": "キーボードではCommand・Shift・Option・Controlなど、他のキーの働きを変えるキー。",
     "cat": "macOS · Programming",
     "detail": "https://app.notion.com/p/modifier-3d3d867b70108197bd31ed519c4c8673"
+  },
+  {
+    "word": "parallel",
+    "meaning": "平行な／並行した",
+    "explain": "ITでは、複数の処理や作業を同時並行で進めること。AI Agentを複数同時に動かす場合にも使う。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/parallel-3d5d867b701081388158d8a8822945a8"
+  },
+  {
+    "word": "PR",
+    "meaning": "Pull Request＝変更取り込み依頼",
+    "explain": "GitHubなどで、自分のbranchの変更を別branchへ取り込んでもらうために提出する変更セットとレビュー単位。",
+    "cat": "Git · Programming",
+    "detail": "https://app.notion.com/p/PR-3d5d867b7010813f9b58ea34226cf5d7"
   },
   {
     "word": "prevent",
@@ -77,11 +273,74 @@
     "detail": "https://app.notion.com/p/prevent-3d3d867b7010819faa96c1bfe6c4be76"
   },
   {
+    "word": "provider",
+    "meaning": "提供者／供給元",
+    "explain": "ITではサービスやモデルを提供する事業者。AI文脈ではOpenAIやAnthropicなど。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/provider-3d5d867b70108160a219d10ea3a860e9"
+  },
+  {
+    "word": "regression",
+    "meaning": "後退／退行／逆戻り",
+    "explain": "ソフトウェアでは、変更によって以前正常だった機能が再び壊れること。regression bug ともいう。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/regression-3d5d867b70108134ae45fc5b8869eaa9"
+  },
+  {
+    "word": "release",
+    "meaning": "解放する／公開する／発売する",
+    "explain": "開発では、完成したバージョンや機能を正式に公開・提供開始すること。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/release-3d5d867b701081d89c6ddb5f914528ab"
+  },
+  {
+    "word": "remote",
+    "meaning": "遠隔の／離れた",
+    "explain": "ITでは、自分の端末ではなく別のPCやサーバーにネットワーク経由で接続して操作すること。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/remote-3d5d867b701081ab933feb4342fd6c6a"
+  },
+  {
+    "word": "repo",
+    "meaning": "repository の略",
+    "explain": "Gitで管理されるプロジェクト一式を指す略称。repository と同義で日常的に使われる。",
+    "cat": "Git · Programming",
+    "detail": "https://app.notion.com/p/repo-3d5d867b70108105966dfbaf16e0889c"
+  },
+  {
     "word": "repository",
-    "meaning": "リポジトリ／保管庫",
-    "explain": "Gitでコードや変更履歴をまとめて管理するプロジェクトの入れ物。",
+    "meaning": "保管庫／収納場所",
+    "explain": "Gitでは、コード・ファイル・変更履歴をまとめて管理するプロジェクトの入れ物。repo は repository の略。",
     "cat": "Git · Programming",
     "detail": "https://app.notion.com/p/repository-3d3d867b701081f7b8a3fb88f2cce360"
+  },
+  {
+    "word": "runtime",
+    "meaning": "実行時間／動作中の時間",
+    "explain": "プログラムが実際に動作している時点や、その実行に必要な環境を指す。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/runtime-3d5d867b70108136b813f529ab1e69f3"
+  },
+  {
+    "word": "session",
+    "meaning": "会合／開催期間／ひと区切り",
+    "explain": "ソフトウェアでは、会話・接続・作業などの開始から終了までをひとまとまりとして扱う単位。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/session-3d5d867b701081929591eea6a63034ba"
+  },
+  {
+    "word": "shell",
+    "meaning": "殻／貝殻",
+    "explain": "コンピューターでは、ユーザーが入力したコマンドを解釈してOSへ処理を依頼するプログラム。zshやbashなど。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/shell-3d5d867b701081e88530f23bbb52d2bb"
+  },
+  {
+    "word": "ship",
+    "meaning": "船／船で運ぶ／発送する",
+    "explain": "開発では、完成した機能や製品をユーザーに届ける・世に出すというカジュアルな表現。releaseやdeployより広く『出す』感がある。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/ship-3d5d867b701081c0a615c9764b968868"
   },
   {
     "word": "source of truth",
@@ -89,6 +348,20 @@
     "explain": "複数のコピーではなく、最終的に正しいと判断する基準となるデータや場所。",
     "cat": "Programming · General",
     "detail": "https://app.notion.com/p/source-of-truth-3d3d867b701081d9ba81d221378ed024"
+  },
+  {
+    "word": "state",
+    "meaning": "状態／状況",
+    "explain": "アプリが現在保持している値や状態。例：タイマーがWork中かBreak中か、メニューが開いているか等。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/state-3d5d867b701081929c6ae809971a92a4"
+  },
+  {
+    "word": "state management",
+    "meaning": "状態の管理",
+    "explain": "アプリのstateをどこに保存し、どう変更・共有・同期するかを設計すること。",
+    "cat": "Programming",
+    "detail": "https://app.notion.com/p/state-management-3d5d867b701081ae9679e5cab5f0f0a6"
   },
   {
     "word": "stuck",
@@ -105,10 +378,66 @@
     "detail": "https://app.notion.com/p/temporary-3d3d867b7010816881dbef96eca80d60"
   },
   {
+    "word": "terminal",
+    "meaning": "終点／端末／ターミナル",
+    "explain": "コンピューターでは、shellに文字コマンドを入力して操作するための画面やアプリ。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/terminal-3d5d867b701081569b0dff0b80c46ce6"
+  },
+  {
+    "word": "test",
+    "meaning": "試験／検査／試す",
+    "explain": "開発では、コードや機能が期待どおり動くか、不具合やregressionがないか確認すること。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/test-3d5d867b701081df8795fd3e4df9d093"
+  },
+  {
+    "word": "UI",
+    "meaning": "User Interface＝利用者との接点",
+    "explain": "ボタン・メニュー・画面など、ユーザーがソフトウェアを操作するときに直接触れる部分。",
+    "cat": "Programming",
+    "detail": "https://app.notion.com/p/UI-3d5d867b70108145ab3df0bf8fe816e7"
+  },
+  {
     "word": "upstream",
     "meaning": "本家側／上流",
     "explain": "Gitでは、自分のコピーや派生元になっている本家プロジェクト側を指すことが多い。",
     "cat": "Git · Programming",
     "detail": "https://app.notion.com/p/upstream-3d3d867b701081e4af4ae846cdf7da1b"
+  },
+  {
+    "word": "vendor lock-in",
+    "meaning": "vendor＝販売元、lock-in＝囲い込み／固定",
+    "explain": "特定企業の製品やサービスへ強く依存し、別のサービスへ移行しにくくなる状態。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/vendor-lock-in-3d5d867b701081ec8f9ff1fc82f3a65b"
+  },
+  {
+    "word": "VM",
+    "meaning": "Virtual Machine＝仮想機械",
+    "explain": "ソフトウェア上に作る仮想的なコンピューター。OSやアプリを独立環境で動かせる。",
+    "cat": "Programming",
+    "detail": "https://app.notion.com/p/VM-3d5d867b70108135bc1cc83126cca1a5"
+  },
+  {
+    "word": "workspace",
+    "meaning": "作業空間／作業場所",
+    "explain": "VS Codeなどで開いているプロジェクトやフォルダ群をまとめた作業領域。",
+    "cat": "Programming · General",
+    "detail": "https://app.notion.com/p/workspace-3d5d867b70108110b9adfffb9193a5d7"
+  },
+  {
+    "word": "workspace context",
+    "meaning": "作業空間の文脈／背景情報",
+    "explain": "AIが現在の作業を理解するために参照する、ファイル・コード・設定・変更内容などの情報一式。",
+    "cat": "Programming",
+    "detail": "https://app.notion.com/p/workspace-context-3d5d867b7010814fa6e7f04ccfb3644f"
+  },
+  {
+    "word": "worktree",
+    "meaning": "work＝作業、tree＝木／系統",
+    "explain": "Gitで、同じrepositoryから複数の作業ディレクトリを同時に用意し、別branchを並行して扱える仕組み。",
+    "cat": "Git · Programming",
+    "detail": "https://app.notion.com/p/worktree-3d5d867b70108167a271df101c85f45a"
   }
 ]
